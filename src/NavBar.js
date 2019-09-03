@@ -166,9 +166,7 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <RouteLink to="/">Home</RouteLink>
-          <RouteLink to="/todos/new">New Todo</RouteLink>
-          {/* <IconButton
+          <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
@@ -176,9 +174,16 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Contacter
-          </Typography>
+
+          <RouteLink to="/">
+            <Typography
+              className={classes.title}
+              variant="h6"
+              noWrap
+            >
+              Contacter
+            </Typography>
+          </RouteLink>
 
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -195,9 +200,11 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <AddIcon />
-            </IconButton>
+            <RouteLink to="/todos/new">
+              <IconButton color="inherit">
+                <AddIcon />
+              </IconButton>
+            </RouteLink>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
@@ -206,12 +213,10 @@ export default function PrimarySearchAppBar() {
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
               color="inherit"
-              to="/todos/new"
-              component={RouteLink}
             >
-              <MoreIcon to="/todos/new" component={RouteLink} />
+              <MoreIcon/>
             </IconButton>
-          </div> */}
+          </div>
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
