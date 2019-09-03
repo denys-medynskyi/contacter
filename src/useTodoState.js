@@ -10,14 +10,14 @@ export default (initialState) => {
 
   return {
     todos,
-    addTodo: (todoText) => {
-      let newTodo = { uid: todoText, title: todoText }
+    addTodo: todoText => {
+      let newTodo = { uid: todoText, title: todoText };
       setTodos([...todos, newTodo]);
 
       database.addTodo(newTodo);
     },
-    deleteTodo: (id) => {
-      const todosAfterRemoval = todos.filter(todo => todo.id !== id);
+    deleteTodo: uid => {
+      const todosAfterRemoval = todos.filter(todo => todo.uid !== uid);
 
       setTodos(todosAfterRemoval);
     }

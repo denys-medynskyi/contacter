@@ -166,7 +166,9 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+          <RouteLink to="/">Home</RouteLink>
+          <RouteLink to="/todos/new">New Todo</RouteLink>
+          {/* <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
@@ -177,9 +179,6 @@ export default function PrimarySearchAppBar() {
           <Typography className={classes.title} variant="h6" noWrap>
             Contacter
           </Typography>
-
-          <RouteLink to="/">Home</RouteLink>
-          <RouteLink to="/todos/new">New Todo</RouteLink>
 
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -212,7 +211,7 @@ export default function PrimarySearchAppBar() {
             >
               <MoreIcon to="/todos/new" component={RouteLink} />
             </IconButton>
-          </div>
+          </div> */}
         </Toolbar>
       </AppBar>
       {renderMobileMenu}

@@ -21,13 +21,7 @@ function addRecord(tableName, data) {
 
 function listRecords(tableName) {
   return db.collection(tableName).get().then(function(querySnapshot) {
-    let records = [];
-
-    querySnapshot.forEach(function(doc) {
-      records.push(doc.data())
-    });
-
-    return records;
+    return querySnapshot.docs.map(doc => doc.data());
   });
 }
 
