@@ -9,15 +9,15 @@ import DeleteIcon from "@material-ui/icons/Delete";
 
 const TodoList = ({ todos, deleteTodo }) => (
   <List>
-    {todos.map((todo, index) => (
-      <ListItem key={index.toString()} dense button>
+    {todos.map((todo) => (
+      <ListItem key={todo.id} dense button>
         <Checkbox tabIndex={-1} disableRipple />
-        <ListItemText primary={todo} />
+        <ListItemText primary={todo.title} />
         <ListItemSecondaryAction>
           <IconButton
             aria-label="Delete"
             onClick={() => {
-              deleteTodo(index);
+              deleteTodo(todo.id);
             }}
             >
             <DeleteIcon />
