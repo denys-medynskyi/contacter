@@ -7,25 +7,25 @@ import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-const TodoList = ({ todos, deleteTodo }) => (
+const ContactList = ({ contacts, deleteContact }) => (
   <List>
-    {todos.map((todo) => (
-      <ListItem key={todo.uid} dense button>
+    {contacts.map(contact => (
+      <ListItem key={contact.uid} dense button>
         <Checkbox tabIndex={-1} disableRipple />
-        <ListItemText primary={todo.title} />
+        <ListItemText primary={contact.title} />
         <ListItemSecondaryAction>
           <IconButton
             aria-label="Delete"
             onClick={() => {
-              deleteTodo(todo.uid);
+              deleteContact(contact.uid);
             }}
-            >
+          >
             <DeleteIcon />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
     ))}
   </List>
-)
+);
 
-export default TodoList;
+export default ContactList;

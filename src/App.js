@@ -1,26 +1,26 @@
 import React from 'react';
 import './App.css';
-import TodoList from "./TodoList";
-import TodoForm from "./TodoForm";
-import useTodoState from "./useTodoState";
+import ContactList from "./ContactList";
+import ContactForm from "./ContactForm";
+import useContactState from "./useContactState";
 import { Router } from "@reach/router";
 import NavBar from "./NavBar";
 
 function App() {
-  const { todos, addTodo, deleteTodo } = useTodoState([]);
+  const { contacts, addContact, deleteContact } = useContactState([]);
 
   return (
     <div className="App">
       <NavBar />
       <Router>
-        <TodoList path="/" todos={todos} deleteTodo={deleteTodo} />
-        <TodoForm
-          path="/todos/new"
-          saveTodo={todoText => {
-            const trimmedText = todoText.trim();
+        <ContactList path="/" contacts={contacts} deleteContact={deleteContact} />
+        <ContactForm
+          path="/contacts/new"
+          saveContact={contactText => {
+            const trimmedText = contactText.trim();
 
             if (trimmedText.length > 0) {
-              addTodo(trimmedText);
+              addContact(trimmedText);
             }
           }}
         />

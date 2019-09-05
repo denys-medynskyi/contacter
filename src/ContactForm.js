@@ -1,22 +1,22 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import useInputState from "./useInputState";
+import useFormState from "./useFormState";
 
-const TodoForm = ({ saveTodo }) => {
-  const { value, reset, onChange } = useInputState();
+const ContactForm = ({ saveContact }) => {
+  const { value, reset, onChange } = useFormState();
 
   return (
     <form
       onSubmit={event => {
         event.preventDefault();
 
-        saveTodo(value);
+        saveContact(value);
         reset();
       }}
     >
       <TextField
         variant="outlined"
-        placeholder="Add todo"
+        placeholder="Add Contact"
         margin="normal"
         onChange={onChange}
         value={value}
@@ -25,4 +25,4 @@ const TodoForm = ({ saveTodo }) => {
   );
 };
 
-export default TodoForm;
+export default ContactForm;

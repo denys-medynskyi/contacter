@@ -26,10 +26,10 @@ function listRecords(tableName) {
 }
 
 export default {
-  addTodo: data => {
-    return addRecord("todos", data);
+  addContact: data => {
+    return addRecord("contacts", data);
   },
-  listTodos: () => {
-    return listRecords("todos")
+  listContacts: () => {
+    return listRecords("contacts");
   }
 };
