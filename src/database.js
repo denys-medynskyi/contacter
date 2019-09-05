@@ -1,6 +1,6 @@
 import firebaseConfig from "./config/secrets/firebaseConfig";
-const firebase = require("firebase");
-require("firebase/database");
+import firebase from "firebase/app";
+import "firebase/firestore";
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
