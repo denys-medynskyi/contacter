@@ -3,7 +3,6 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
-import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
 
@@ -11,8 +10,9 @@ const ContactList = ({ contacts, deleteContact }) => (
   <List>
     {contacts.map(contact => (
       <ListItem key={contact.uid} dense button>
-        <Checkbox tabIndex={-1} disableRipple />
-        <ListItemText primary={contact.title} />
+        <ListItemText>
+          {contact.first_name} {contact.last_name}, from {contact.location}
+        </ListItemText>
         <ListItemSecondaryAction>
           <IconButton
             aria-label="Delete"
