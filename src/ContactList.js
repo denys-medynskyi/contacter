@@ -11,7 +11,7 @@ const ContactList = ({ contacts, deleteContact }) => (
     {contacts.map(contact => (
       <ListItem key={contact.uid} dense button>
         <ListItemText>
-          {contact.first_name} {contact.last_name}, from {contact.location}
+          {contact.name}, from {contact.location}
         </ListItemText>
         <ListItemSecondaryAction>
           <IconButton

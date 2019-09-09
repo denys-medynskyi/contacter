@@ -16,12 +16,8 @@ function App() {
         <ContactList path="/" contacts={contacts} deleteContact={deleteContact} />
         <ContactForm
           path="/contacts/new"
-          saveContact={contactText => {
-            const trimmedText = contactText.trim();
-
-            if (trimmedText.length > 0) {
-              addContact(trimmedText);
-            }
+          saveContact={contactData => {
+            addContact(contactData);
           }}
         />
       </Router>

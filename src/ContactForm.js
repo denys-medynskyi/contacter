@@ -3,24 +3,58 @@ import TextField from "@material-ui/core/TextField";
 import useFormState from "./useFormState";
 
 const ContactForm = ({ saveContact }) => {
-  const { value, reset, onChange } = useFormState();
+  const { form, handleChange, handleSubmit } = useFormState(saveContact);
 
   return (
-    <form
-      onSubmit={event => {
-        event.preventDefault();
-
-        saveContact(value);
-        reset();
-      }}
-    >
+    <form onSubmit={handleSubmit}>
       <TextField
         variant="outlined"
-        placeholder="Add Contact"
+        placeholder="Name"
+        name="name"
         margin="normal"
-        onChange={onChange}
-        value={value}
+        onChange={handleChange}
+        value={form.name}
       />
+
+      <br />
+
+      {/* <TextField
+        variant="outlined"
+        placeholder="Social URL"
+        name="social_url"
+        type="url"
+        margin="normal"
+        onChange={handleChange}
+        form={form.social_url}
+      />
+
+      <br />
+
+      <TextField
+        variant="outlined"
+        placeholder="Phone"
+        name="phone"
+        type="tel"
+        margin="normal"
+        onChange={handleChange}
+        form={form.phone}
+      />
+
+      <br />
+
+      <TextField
+        variant="outlined"
+        placeholder="Location"
+        type="address"
+        name="location"
+        margin="normal"
+        onChange={handleChange}
+        form={form.location}
+      /> */}
+
+      <br />
+
+      <button type="submit">Create</button>
     </form>
   );
 };

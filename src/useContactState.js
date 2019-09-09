@@ -10,14 +10,16 @@ export default (initialState) => {
 
   return {
     contacts,
-    addContact: contactText => {
-      let newContact = { uid: contactText, title: contactText };
+    addContact: contactData => {
+      let newContact = Object.assign(contactData, {uid: contactData.name});
       setContacts([...contacts, newContact]);
 
       database.addContact(newContact);
     },
     deleteContact: uid => {
-      const contactsAfterRemoval = contacts.filter(contact => contact.uid !== uid);
+      const contactsAfterRemoval = contacts.filter(
+        contact => contact.uid !== uid
+      );
 
       setContacts(contactsAfterRemoval);
     }

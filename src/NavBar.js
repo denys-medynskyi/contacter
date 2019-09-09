@@ -176,11 +176,7 @@ export default function PrimarySearchAppBar() {
           </IconButton>
 
           <RouteLink to="/">
-            <Typography
-              className={classes.title}
-              variant="h6"
-              noWrap
-            >
+            <Typography className={classes.title} variant="h6" noWrap>
               Contacter
             </Typography>
           </RouteLink>
@@ -200,7 +196,7 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <RouteLink to="/todos/new">
+            <RouteLink to="/contacts/new">
               <IconButton color="inherit">
                 <AddIcon />
               </IconButton>
@@ -214,7 +210,7 @@ export default function PrimarySearchAppBar() {
               onClick={handleMobileMenuOpen}
               color="inherit"
             >
-              <MoreIcon/>
+              <MoreIcon />
             </IconButton>
           </div>
         </Toolbar>

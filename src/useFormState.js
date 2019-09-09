@@ -1,13 +1,23 @@
 import { useState } from "react";
 
-export default () => {
-  const [value, setValue] = useState("");
+export default (callback) => {
+  const emptyForm = {
+    name: ""
+  };
+  
+  const [form, setForm] = useState(emptyForm);
 
   return {
-    value,
-    onChange: event => {
-      setValue(event.target.value);
+    form,
+    handleChange: event => {
+      event.persist();
+
+      setForm(form => ({ ...form, [event.target.name]: event.target.value }));
     },
-    reset: () => setValue("")
+    handleSubmit: event => {
+      event.preventDefault();
+      setForm(emptyForm);
+      callback(form);
+    }
   };
 };
