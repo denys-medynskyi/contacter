@@ -22,6 +22,8 @@ export default (initialState) => {
       );
 
       setContacts(contactsAfterRemoval);
+
+      database.deleteContact(uid);
     }
   };
 };

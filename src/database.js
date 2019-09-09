@@ -25,11 +25,26 @@ function listRecords(tableName) {
   });
 }
 
+function deleteRecord(tableName, uid) {
+  db.collection(tableName)
+    .doc(uid)
+    .delete()
+    .then(function() {
+      console.log("Document successfully deleted!");
+    })
+    .catch(function(error) {
+      console.error("Error removing document: ", error);
+    });
+}
+
 export default {
   addContact: data => {
     return addRecord("contacts", data);
   },
   listContacts: () => {
     return listRecords("contacts");
+  },
+  deleteContact: (uid) => {
+    return deleteRecord("contacts", uid);
   }
 };
