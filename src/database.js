@@ -12,10 +12,10 @@ function addRecord(tableName, data) {
     .doc(data.uid)
     .set(data)
     .then(function() {
-      return {}
+      console.log("Document successfully written!");
     })
     .catch(function(error) {
-      return {error: error};
+      console.error("Error writing document: ", error);
     });
 }
 
@@ -30,10 +30,10 @@ function deleteRecord(tableName, uid) {
     .doc(uid)
     .delete()
     .then(function() {
-      return {}
+      console.log("Document successfully deleted!");
     })
     .catch(function(error) {
-      return { error: error };
+      console.error("Error removing document: ", error);
     });
 }
 

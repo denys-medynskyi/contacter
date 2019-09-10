@@ -8,7 +8,7 @@ export default (initialState) => {
   const { addToast } = useToasts();
 
   database.listContacts().then((contacts) => {
-    setContacts(contacts)
+    setContacts(contacts);
   })
 
   return {
@@ -17,6 +17,7 @@ export default (initialState) => {
       addToast("Saved Successfully", { appearance: "success" });
       let newContact = Object.assign(contactData, {uid: contactData.name});
       setContacts([...contacts, newContact]);
+
       database.addContact(newContact);
     },
     deleteContact: uid => {
