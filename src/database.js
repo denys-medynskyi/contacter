@@ -8,14 +8,14 @@ if (!firebase.apps.length) {
 const db = firebase.firestore();
 
 function addRecord(tableName, data) {
-  db.collection(tableName)
+  return db.collection(tableName)
     .doc(data.uid)
     .set(data)
     .then(function() {
-      console.log("Document successfully written!");
+      return {}
     })
     .catch(function(error) {
-      console.error("Error writing document: ", error);
+      return {error};
     });
 }
 

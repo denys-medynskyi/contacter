@@ -14,11 +14,18 @@ export default (initialState) => {
   return {
     contacts,
     addContact: contactData => {
-      addToast("Saved Successfully", { appearance: "success" });
       let newContact = Object.assign(contactData, {uid: contactData.name});
-      setContacts([...contacts, newContact]);
 
-      database.addContact(newContact);
+      database.addContact(newContact).then(function(data) {
+        const { error } = data;
+
+        if (error) {
+          addToast(error.message, { appearance: "error" });
+        } else {
+          addToast("Saved Successfully", { appearance: "success" });
+          setContacts([...contacts, newContact]);
+        }
+      })
     },
     deleteContact: uid => {
       const contactsAfterRemoval = contacts.filter(
