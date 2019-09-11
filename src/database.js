@@ -26,14 +26,14 @@ function listRecords(tableName) {
 }
 
 function deleteRecord(tableName, uid) {
-  db.collection(tableName)
+  return db.collection(tableName)
     .doc(uid)
     .delete()
     .then(function() {
-      console.log("Document successfully deleted!");
+      return {};
     })
     .catch(function(error) {
-      console.error("Error removing document: ", error);
+      return { error };
     });
 }
 

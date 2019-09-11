@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import database from "./database";
 import { useToasts } from "react-toast-notifications";
-
+import { notifications } from "./texts/notifications.json";
 
 export default (initialState) => {
   const [contacts, setContacts] = useState(initialState);
@@ -22,19 +22,24 @@ export default (initialState) => {
         if (error) {
           addToast(error.message, { appearance: "error" });
         } else {
-          addToast("Saved Successfully", { appearance: "success" });
+          addToast(notifications.created, { appearance: "success" });
           setContacts([...contacts, newContact]);
         }
       })
     },
     deleteContact: uid => {
-      const contactsAfterRemoval = contacts.filter(
-        contact => contact.uid !== uid
-      );
+      const { error } = database.deleteContact(uid);
 
-      setContacts(contactsAfterRemoval);
+      if (error) {
+        addToast(error.message, { appearance: "error" });
+      } else {
+        addToast(notifications.deleted, { appearance: "success" });
+        const contactsAfterRemoval = contacts.filter(
+          contact => contact.uid !== uid
+        );
 
-      database.deleteContact(uid);
+        setContacts(contactsAfterRemoval);;
+      }
     }
   };
 };
