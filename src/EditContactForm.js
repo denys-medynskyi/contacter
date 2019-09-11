@@ -1,9 +1,13 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import useFormState from "./useFormState";
+import database from "./database";
 
-const ContactForm = ({ saveContact }) => {
-  const { form, handleChange, handleSubmit } = useFormState(saveContact);
+const EditContactForm = ({ saveContact }) => {
+  // database.loadContact().then((contact) => {})
+  const { form, handleChange, handleSubmit } = useFormState({
+    saveContact: saveContact
+  });
 
   return (
     <form onSubmit={handleSubmit}>
@@ -17,6 +21,16 @@ const ContactForm = ({ saveContact }) => {
       />
 
       <br />
+
+      <TextField
+        variant="outlined"
+        placeholder="Location"
+        type="address"
+        name="location"
+        margin="normal"
+        onChange={handleChange}
+        form={form.location}
+      />
 
       {/* <TextField
         variant="outlined"
@@ -59,4 +73,4 @@ const ContactForm = ({ saveContact }) => {
   );
 };
 
-export default ContactForm;
+export default EditContactForm;

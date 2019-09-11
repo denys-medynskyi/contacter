@@ -1,11 +1,12 @@
 import { useState } from "react";
 
-export default (callback) => {
-  const emptyForm = {
-    name: ""
+export default ({ saveContact }) => {
+  const defaultForm = {
+    name: "",
+    location: ""
   };
-  
-  const [form, setForm] = useState(emptyForm);
+
+  const [form, setForm] = useState(defaultForm);
 
   return {
     form,
@@ -16,8 +17,8 @@ export default (callback) => {
     },
     handleSubmit: event => {
       event.preventDefault();
-      setForm(emptyForm);
-      callback(form);
+      setForm(defaultForm);
+      saveContact(form);
     }
   };
 };

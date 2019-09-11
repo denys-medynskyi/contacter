@@ -14,7 +14,7 @@ export default (initialState) => {
   return {
     contacts,
     addContact: contactData => {
-      let newContact = Object.assign(contactData, {uid: contactData.name});
+      let newContact = Object.assign(contactData, { uid: contactData.name });
 
       database.addContact(newContact).then(function(data) {
         const { error } = data;
@@ -25,7 +25,7 @@ export default (initialState) => {
           addToast(notifications.created, { appearance: "success" });
           setContacts([...contacts, newContact]);
         }
-      })
+      });
     },
     deleteContact: uid => {
       const { error } = database.deleteContact(uid);
@@ -38,7 +38,7 @@ export default (initialState) => {
           contact => contact.uid !== uid
         );
 
-        setContacts(contactsAfterRemoval);;
+        setContacts(contactsAfterRemoval);
       }
     }
   };

@@ -15,6 +15,7 @@ function addRecord(tableName, data) {
       return {}
     })
     .catch(function(error) {
+      console.error(error);
       return {error};
     });
 }
@@ -33,6 +34,7 @@ function deleteRecord(tableName, uid) {
       return {};
     })
     .catch(function(error) {
+      console.error(error);
       return { error };
     });
 }
