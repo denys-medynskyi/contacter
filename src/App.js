@@ -8,9 +8,12 @@ import { Router } from "@reach/router";
 import NavBar from "./NavBar";
 
 function App() {
-  const { contacts, addContact, deleteContact } = useContactState([]);
-
-  debugger
+  const {
+    contacts,
+    addContact,
+    updateContact,
+    deleteContact
+  } = useContactState([]);
 
   return (
     <div className="App">
@@ -31,8 +34,8 @@ function App() {
 
         <EditContactForm
           path="/contacts/:id/edit"
-          saveContact={contactData => {
-            addContact(contactData);
+          updateContact={contactData => {
+            updateContact(contactData);
           }}
         />
       </Router>

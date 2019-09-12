@@ -11,12 +11,12 @@ import { Link as RouteLink } from "@reach/router";
 const ContactList = ({ contacts, deleteContact }) => (
   <List>
     {contacts.map(contact => (
-      <ListItem key={contact.uid} dense button>
+      <ListItem key={contact.id} dense button>
         <ListItemText>
           {contact.name}, from {contact.location}
         </ListItemText>
         <ListItemSecondaryAction>
-          <RouteLink to={`/contacts/${contact.uid}/edit`}>
+          <RouteLink to={`/contacts/${contact.id}/edit`}>
             <IconButton aria-label="Edit">
               <EditIcon />
             </IconButton>
@@ -25,7 +25,7 @@ const ContactList = ({ contacts, deleteContact }) => (
           <IconButton
             aria-label="Delete"
             onClick={() => {
-              deleteContact(contact.uid);
+              deleteContact(contact.id);
             }}
           >
             <DeleteIcon />

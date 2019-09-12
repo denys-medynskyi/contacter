@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 export default ({ saveContact }) => {
-  const defaultForm = {
+  const defaultContact = {
     name: "",
     location: ""
   };
 
-  const [form, setForm] = useState(defaultForm);
+  const [form, setForm] = useState(defaultContact);
 
   return {
     form,
@@ -17,7 +17,6 @@ export default ({ saveContact }) => {
     },
     handleSubmit: event => {
       event.preventDefault();
-      setForm(defaultForm);
       saveContact(form);
     }
   };

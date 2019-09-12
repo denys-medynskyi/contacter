@@ -1,6 +1,7 @@
 {
   "notifications": {
     "created": "Saved Successfully",
+    "updated": "Updated Successfully",
     "deleted": "Successfully deleted"
   }
 }
