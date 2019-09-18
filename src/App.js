@@ -6,6 +6,8 @@ import EditContactForm from "./EditContactForm";
 import useContactState from "./useContactState";
 import { Router } from "@reach/router";
 import NavBar from "./NavBar";
+import SignInScreen from "./SignInScreen";
+
 
 function App() {
   const {
@@ -18,12 +20,15 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+
       <Router>
-        <ContactList
+        <SignInScreen path="/" />
+
+        {/* <ContactList
           path="/"
           contacts={contacts}
           deleteContact={deleteContact}
-        />
+        /> */}
 
         <CreateContactForm
           path="/contacts/new"
@@ -38,6 +43,8 @@ function App() {
             updateContact(contactData);
           }}
         />
+
+        <SignInScreen path="/sign_in" />
       </Router>
     </div>
   );
