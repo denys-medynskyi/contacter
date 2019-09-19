@@ -87,13 +87,13 @@ export default {
   updateContact: data => {
     return updateRecord("contacts", data);
   },
-  listContacts: () => {
+  listContacts: userId => {
     return listRecords("contacts");
   },
   deleteContact: id => {
     return deleteRecord("contacts", id);
   },
   loadContact: id => {
-    return loadRecord("contacts", id)
+    return loadRecord("contacts", id);
   }
 };

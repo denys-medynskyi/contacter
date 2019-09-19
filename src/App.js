@@ -14,23 +14,28 @@ import useContactState from "./useState/useContactState";
 import useUserState from "./useState/useUserState";
 
 function App() {
+                 // with current user
+                 const { currentUser, logIn, logOut } = useUserState({
+                   displayName: "Denys Medynskyi",
+                   id: "123"
+                 });
+                 // without current user
+                 //  const [currentUser, setCurrentUser] = useState(null);
+
                  const {
                    contacts,
                    addContact,
                    updateContact,
                    deleteContact
-                 } = useContactState([]);
-
-                 // with current user
-                  const {currentUser, logIn, logOut} = useUserState({
-                    displayName: "Denys Medynskyi"
-                  });
-                 // without current user
-                //  const [currentUser, setCurrentUser] = useState(null);
+                 } = useContactState({ initialState: [], userId: currentUser.id });
 
                  return (
                    <div className="App">
-                     <NavBar currentUser={currentUser} logIn={logIn} logOut={logOut}/>
+                     <NavBar
+                       currentUser={currentUser}
+                       logIn={logIn}
+                       logOut={logOut}
+                     />
 
                      <Router>
                        {currentUser ? (
