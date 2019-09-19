@@ -1,16 +1,17 @@
+// utils
 import React from 'react';
-import './App.css';
-import ContactList from "./ContactList";
-import CreateContactForm from "./CreateContactForm";
-import EditContactForm from "./EditContactForm";
-import useContactState from "./useContactState";
-import useUserState from "./useUserState";
 import { Router } from "@reach/router";
-import NavBar from "./NavBar";
-import SignInScreen from "./SignInScreen";
-
-// TODO: extract
-import { useState } from "react";
+// styles
+import './App.css';
+// components
+import ContactList from "./components/ContactList";
+import CreateContactForm from "./components/CreateContactForm";
+import EditContactForm from "./components/EditContactForm";
+import NavBar from "./components/NavBar";
+import SignInScreen from "./components/SignInScreen";
+// state
+import useContactState from "./useState/useContactState";
+import useUserState from "./useState/useUserState";
 
 function App() {
                  const {

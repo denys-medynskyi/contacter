@@ -1,6 +1,6 @@
 import React from "react";
 import ContactForm from "./ContactForm";
-import useEditContactFormState from "./useEditContactFormState";
+import useEditContactFormState from "../useState/useEditContactFormState";
 
 const EditContactForm = ({ updateContact, id }) => {
   const { form, handleChange, handleSubmit } = useEditContactFormState({

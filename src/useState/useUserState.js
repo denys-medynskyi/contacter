@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 // import firebase from "firebase/app";
 import { useToasts } from "react-toast-notifications";
-import { notifications } from "./texts/notifications.json";
+import { notifications } from "../config/texts/notifications.json";
 
 export default initialState => {
   const [currentUser, setCurrentUser] = useState(initialState);

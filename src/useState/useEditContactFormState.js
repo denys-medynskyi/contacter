@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import database from "./database";
+import database from "../database";
 
 export default ({ updateContact, id }) => {
   const defaultContact = {

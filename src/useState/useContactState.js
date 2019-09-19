@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import database from "./database";
+import database from "../database";
 import { useToasts } from "react-toast-notifications";
-import { notifications } from "./texts/notifications.json";
+import { notifications } from "../config/texts/notifications.json";
 
 export default (initialState) => {
   const [contacts, setContacts] = useState(initialState);
