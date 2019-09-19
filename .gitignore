@@ -22,3 +22,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 /src/config/secrets
+# firebase
+firebase-debug.log
+firestore-debug.log

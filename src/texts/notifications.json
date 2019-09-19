@@ -2,6 +2,10 @@
   "notifications": {
     "created": "Saved Successfully",
     "updated": "Updated Successfully",
-    "deleted": "Successfully deleted"
+    "deleted": "Successfully deleted",
+    "user": {
+      "logIn": "Successfully logged in",
+      "logOut": "Successfully logged out"
+    }
   }
 }
