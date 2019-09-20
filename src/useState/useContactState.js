@@ -3,14 +3,14 @@ import database from "../database";
 import { useToasts } from "react-toast-notifications";
 import { notifications } from "../config/texts/notifications.json";
 
-export default ({initialState, userId}) => {
+export default (initialState) => {
   const [contacts, setContacts] = useState(initialState);
   const { addToast } = useToasts();
 
 
   useEffect(() => {
     async function fetchData() {
-      database.listContacts(userId).then(contacts => {
+      database.listContacts().then(contacts => {
         setContacts(contacts);
       });
     }
@@ -21,9 +21,7 @@ export default ({initialState, userId}) => {
   return {
     contacts,
     addContact: contactData => {
-      const enhancedContactData = Object.assign({ userId: userId }, contactData);
-
-      database.addContact(enhancedContactData).then(function(data) {
+      database.addContact(contactData).then(function(data) {
         const { error } = data;
 
         if (error) {
