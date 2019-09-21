@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from 'components/App';
 import * as serviceWorker from './serviceWorker';
 import { ToastProvider } from "react-toast-notifications";
+import Firebase, { FirebaseContext } from "components/Firebase";
 
 ReactDOM.render(
-  <ToastProvider>
-    <App />
-  </ToastProvider>,
+  <FirebaseContext.Provider value={new Firebase()}>
+    <ToastProvider>
+      <App />
+    </ToastProvider>
+  </FirebaseContext.Provider>,
   document.getElementById("root")
 );
 
