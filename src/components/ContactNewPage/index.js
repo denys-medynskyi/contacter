@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ContactForm from "components/ContactForm";
 import { compose } from "recompose";
 import { withFirebase } from "components/Firebase";
-import { withAuthUser } from "components/Session";
+import { withAuthUser, withAuthorization } from "components/Session";
 
 class ContactNewPage extends Component {
   constructor(props) {
@@ -49,4 +49,11 @@ class ContactNewPage extends Component {
   }
 }
 
-export default compose(withAuthUser, withFirebase)(ContactNewPage);
+const condition = authUser => !!authUser;
+
+const authorizedPage = withAuthorization(condition)(ContactNewPage);
+
+export default compose(
+  withAuthUser,
+  withFirebase
+)(authorizedPage);
