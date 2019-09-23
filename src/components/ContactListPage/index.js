@@ -8,7 +8,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import { compose } from "recompose";
 import { withFirebase } from 'components/Firebase';
-import { withAuthUser } from "components/Session";
+import { withAuthUser, withAuthorization } from "components/Session";
 import { Link } from "react-router-dom";
 
 class ContactListPage extends Component {
@@ -79,4 +79,11 @@ class ContactListPage extends Component {
   }
 };
 
-export default compose(withAuthUser, withFirebase)(ContactListPage);
+const condition = authUser => !!authUser;
+
+const authorizedPage = withAuthorization(condition)(ContactListPage);
+
+export default compose(
+  withAuthUser,
+  withFirebase
+)(authorizedPage);
