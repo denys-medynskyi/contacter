@@ -76,10 +76,11 @@ class Firebase {
       });
   };
 
-  listRecords = tableName => {
+  listRecords = (tableName, user_uid) => {
     console.log("listRecords is requested");
     return this.db
       .collection(tableName)
+      .where("user_uid", "==", user_uid)
       .get()
       .then(function(querySnapshot) {
         return querySnapshot.docs.map(doc => {
@@ -113,8 +114,8 @@ class Firebase {
     return this.updateRecord("contacts", data);
   };
 
-  listContacts = () => {
-    return this.listRecords("contacts");
+  listContacts = (user_uid) => {
+    return this.listRecords("contacts", user_uid);
   };
 
   deleteContact = id => {
