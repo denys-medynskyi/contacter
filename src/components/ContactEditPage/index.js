@@ -1,12 +1,17 @@
 import React, { Component } from "react";
+import { compose } from "recompose";
 import ContactForm from "components/ContactForm";
 import { withFirebase } from "components/Firebase";
+import { withAuthUser, withAuthorization } from "components/Session";
+
+import * as ROUTES from "constants/routes";
 
 class ContactEditPage extends Component {
   constructor(props) {
     super(props);
 
     this.contactId = this.props.match.params.id;
+
     this.database = this.props.firebase;
 
     this.state = {
@@ -22,6 +27,10 @@ class ContactEditPage extends Component {
     this.setState({loading: true});
 
     this.database.loadContact(this.contactId).then(contact => {
+      if (contact.user_uid !== this.props.authUser.uid) {
+        this.props.history.push(ROUTES.SIGN_IN);
+      }
+
       this.setState({ contact, loading: false });
     });
   }
@@ -51,4 +60,11 @@ class ContactEditPage extends Component {
   }
 };
 
-export default withFirebase(ContactEditPage);
+const condition = authUser => !!authUser;
+
+const authorizedPage = withAuthorization(condition)(ContactEditPage);
+
+export default compose(
+  withAuthUser,
+  withFirebase
+)(authorizedPage);
