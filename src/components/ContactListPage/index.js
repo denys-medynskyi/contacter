@@ -26,9 +26,11 @@ class ContactListPage extends Component {
   componentDidMount() {
     this.setState({loading: true});
 
-    this.props.firebase.listContacts(this.authUser.uid).then(contacts => {
-      this.setState({ contacts, loading: false });
-    });
+    if (this.props.authUser) {
+      this.props.firebase.listContacts(this.authUser.uid).then(contacts => {
+        this.setState({ contacts, loading: false });
+      });
+    }
   }
 
   deleteContact(id) {

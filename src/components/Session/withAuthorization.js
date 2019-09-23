@@ -1,5 +1,4 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import { compose } from 'recompose';
 
 import AuthUserContext from "./context";
@@ -12,7 +11,7 @@ const withAuthorization = condition => Component => {
       this.listener = this.props.firebase.auth.onAuthStateChanged(
         authUser => {
           if (!condition(authUser)) {
-            return <Redirect to={ROUTES.SIGN_IN} />
+            this.props.history.push(ROUTES.SIGN_IN);
           }
         }
       )
