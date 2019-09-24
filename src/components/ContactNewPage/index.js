@@ -16,24 +16,35 @@ class ContactNewPage extends Component {
       contact: {
         name: "",
         location: ""
-      }
+      },
+      error: ""
     };
+
   }
 
   handleChange = event => {
     event.persist();
 
+    const inputValue = event.target.value;
+    const inputName = event.target.name;
+
+    if (inputValue === "") {
+      this.setState({ error: `${inputName}: can not be blank` });
+    } else {
+      this.setState({ error: "" });
+    }
+
     this.setState({
       contact: {
         ...this.state.contact,
-        [event.target.name]: event.target.value
+        [inputName]: inputValue
       }
     });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    const user_uid = this.props.authUser.uid
+    const user_uid = this.props.authUser.uid;
     this.database.addContact({ ...this.state.contact, user_uid: user_uid });
   };
 
@@ -43,6 +54,7 @@ class ContactNewPage extends Component {
         form={this.state.contact}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
+        error={this.state.error}
         submitLabel="Create"
       />
     );
