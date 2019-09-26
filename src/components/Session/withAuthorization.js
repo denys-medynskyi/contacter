@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { compose } from 'recompose';
 
 import AuthUserContext from "./context";
@@ -29,6 +30,10 @@ const withAuthorization = condition => Component => {
   return compose(
     withFirebase
   )(WithAuthorization);
+};
+
+withAuthorization.propTypes = {
+  condition: PropTypes.func
 };
 
 export default withAuthorization;
