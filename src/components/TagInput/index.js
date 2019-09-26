@@ -1,5 +1,5 @@
 import "./styles.css";
-import useTagsState from "useState/useTagsState"
+import useTagsState from "hooks/useTagsState"
 const React = require("react");
 const ReactTags = require("react-tag-autocomplete");
 
