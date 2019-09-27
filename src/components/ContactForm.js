@@ -2,6 +2,7 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Error from "./Error";
 import TagInput from "components/TagInput";
+import LocationInput from "components/LocationInput";
 
 const ContactForm = ({
   form,
@@ -23,15 +24,7 @@ const ContactForm = ({
 
       <br />
 
-      <TextField
-        variant="outlined"
-        placeholder="Location"
-        type="address"
-        name="location"
-        margin="normal"
-        onChange={handleChange}
-        value={form.location}
-      />
+      <LocationInput onChange={handleChange} value={form.location} />
 
       <br />
 
